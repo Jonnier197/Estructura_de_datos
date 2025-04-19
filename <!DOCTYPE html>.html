@@ -140,7 +140,6 @@
             <div class="empty-message">No hay contactos aún.</div>
         </div>
     </div>
-    Segundo integrante
 <script>
         // Variables globales
         const contactos = [];
@@ -159,6 +158,36 @@
                 mostrarTodos = false; // Oculta la lista después de agregar
             } else {
                 mostrarMensaje('Por favor complete ambos campos');
+            }
+        }
+        function buscarContacto() {
+            const terminoBusqueda = document.getElementById('nombre').value.trim();
+            
+            if (!terminoBusqueda) {
+                mostrarMensaje('Primero ingrese un nombre a buscar');
+                return;
+            }
+            
+            const resultados = contactos.filter(contacto => 
+                contacto.nombre.toLowerCase().includes(terminoBusqueda.toLowerCase()) ||
+                contacto.telefono.includes(terminoBusqueda)
+            );
+            
+            if (resultados.length > 0) {
+                mostrarListaContactos(resultados);
+                mostrarTodos = false;
+            } else {
+                mostrarMensaje('No se encontraron contactos con ese criterio');
+            }
+        }
+        
+        // Función para mostrar todos los contactos
+        function mostrarContactos() {
+            if (contactos.length > 0) {
+                mostrarListaContactos(contactos);
+                mostrarTodos = true;
+            } else {
+                mostrarMensaje('No hay contactos para mostrar');
             }
         }
     </script>
