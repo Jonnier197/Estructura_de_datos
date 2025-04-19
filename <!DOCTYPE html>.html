@@ -140,5 +140,27 @@
             <div class="empty-message">No hay contactos aún.</div>
         </div>
     </div>
+    Segundo integrante
+<script>
+        // Variables globales
+        const contactos = [];
+        let mostrarTodos = false;
+        
+        // Función para agregar contacto
+        function agregarContacto() {
+            const nombre = document.getElementById('nombre').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            
+            if (nombre && telefono) {
+                contactos.push({ nombre, telefono });
+                document.getElementById('nombre').value = '';
+                document.getElementById('telefono').value = '';
+                mostrarMensaje('Contacto agregado correctamente');
+                mostrarTodos = false; // Oculta la lista después de agregar
+            } else {
+                mostrarMensaje('Por favor complete ambos campos');
+            }
+        }
+    </script>
 </body>
 </html>
